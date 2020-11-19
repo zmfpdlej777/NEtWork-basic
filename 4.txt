@@ -1,0 +1,4 @@
+1. 라우터, 컴퓨터 등 접속방법
+ 1) Local Access : A -> A (내꺼 접속) => Console Password
+ 2) Network Access : A -> B (리모컨) => Telnet Password
+	= Remote Access(원격 접속)
