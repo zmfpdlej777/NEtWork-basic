@@ -1,0 +1,74 @@
+copy  명령어의 응용
+copy A B : A를 B에 복사해라 (A→B)
+
+ 1) copy running-config startup-config : RAM -> NVRAM 으로 복사
+    copy startup-config running-config : NVRAM -> RAM 으로 복사
+
+ 2) copy running-config tftp	       : RAM -> TFTP 서버로 업로드
+    copy tftp running-config           : TFTP -> RAM 으로 다운로드
+
+ 3) copy startup-config tftp           : NVRAM -> TFTP 서버로 업로드 
+    copy tftp startup-config           : TFTP -> NVRAM 으로 다운로드
+
+ 4) copy flash tftp		       : flash -> TFTP 서버로 업로드
+    copy tftp flash		       : TFTP -> flash 로 다운로드
+-------------------------------------------------------------------------
+Router 4대 Memory 
+	설명			읽기	쓰기	휘발여부
+ROM	안전모드 = rommon Mode	O	X	비휘발
+RAM	running-config		O	O	휘발
+NVRAM	startup-config		O	O	비휘발
+Flash	IOS=운영체제		O	O	비휘발
+=========================================================================
+FTP(File Transfer Protocol)		- TCP 20~21 Port
+TFTP(Trival File Transfer Protocol)	- UDP 69 Port
+=========================================================================
+Local HOST	내 컴퓨터
+Remote HOST	남 컴퓨터 (라우터 입장에서 남의 컴퓨터는 서버밖에 없음)
+
+-----------------------------------------------------------------------
+Internet의 흐름 (썰)
+
+*ARPA = 군사목적
+
+1. Milnet(군대용) = Intranet
+2. Internet 민간용
+   1) Lan(local area network) : 근거리 통신망
+	-Ethernet : multiple access 다중접속가능 / 속도는 N빵     cable)Ethernet(iron) / fastEthernet(copper) / Gigaethernet(gold)
+	-Token-Ring : single accress / 속도는 100% but 나머지는 통신 불가 ex.본사와 hub구조 cable)fiber(광섬유)
+	-FDDI =Token 2개(시계방향+반시계방향) / 속도 100% but     " 
+   2) Wan(wide area network) : 원거리 통신망   
+	-serial = 직렬포트
+----------------------------------------------------------------------------
+
+LAN
+UTP(Unshieled Twisted pair cable)
+주띠주 초띠파 파티초 갈띠갈 = T568B *암기
+1  2 3  4 5  6 7  8  ㄱ 
+3  6 1  4 5  2 7  8  <」12,36 교차
+초띠초 주띠파 파띠주 갈띠갈 = T568A
+
+*참고 : 같다 / 다르다의 기준은 IP를 쓰냐 안쓰냐의 차이
+straight cable : 실선 = 다른 디바이스(컴/라우터<->스위치/허브) 연결에 제작. 수송신이 되니까 선을 꼬아줄 필요가 없다. => T568A - T568A
+crossover cable : 점선 = 같은 디바이스(스위치-스위치 / 스위치-허브 / 컴 -컴) 연결에 제작.
+		        1,2번이 양쪽다 수신이니까 콜리젼이 일어남. 때문에 인간이 인위적으로 1,2를 3,6으로 바꿔줌 => T568A - T568B
+ex)
+  MDI   |   MDI - X  =스트레이트 케이블 사용
+1 송	|       수 1
+2 송	|       수 2
+3 수	|	송 3
+6 수	| 	송 6
+
+  MDI   |   MDI - X  =크로스오버 케이블 사용
+1 송	|       송 1
+2 송	|       송 2
+3 수	|	수 3
+6 수	| 	수 6
+
+			
+
+
+
+
+
+
