@@ -1,0 +1,38 @@
+R2)show ip protocols
+EIGRP metric weight K1=1, K2=0, K3=1, K4=0, K5=0
+
+K1 = Bandwidth		1
+K2 = Load		0
+K3 = Delay		1
+K4 = Reliability	0
+K5 = MTU		0
+
+
+R2)show int s0/0
+  MTU 1500 bytes, BW 1544 Kbit, DLY 20000 usec,
+     reliability 255/255, txload 1/255, rxload 1/255
+
+R2)show int f0/0
+  MTU 1500 bytes, BW 100000 Kbit, DLY 100 usec,
+     reliability 255/255, txload 1/255, rxload 1/255
+------------------------------------------------------------------------------
+. BW(bandwidth)는 목적지까지 가는 도중의 모든 인터페이스에 설정된 대역폭중에서
+  가장 낮은(느린) 값을 취한 후, 다음 공식에 대입한다.
+
+  BW=10^10  /  가장 느린 대역폭
+
+
+. DLY(Delay)값은 목적지까지 가는 경로상의 모든 지연 값을 합친 다음 10으로 나눈다.
+
+(6476 + 2010)*256 = 8486*256 = 2,172,416
+
+
+
+
+
+
+
+
+
+
+
