@@ -1,0 +1,48 @@
+20.12.1
+
+OS 7계층
+1 physical	|	HUB,케이블
+2 data link	|	스위치 MAC주소ㅡ테이블
+3 network	|	라우팅,서브넷팅
+4 transport	|	포트(IP:) *IP한개를 13만개로쪼갤 수 있다.
+5 session	|	
+6 presentation	|
+7 application	|
+
+---------------------------------------------------------------------------------------
+[물리계층] : *단위-시그널				
+*케이블 포함
+허브 : 언어X, 무조건 브로드캐스트, collision 발생
+CSMA/CD : carriar sence multiple access/collision detector
+포트 : 2진수, 읽기 불가
+
+[데이터 링크 계층] : 전기를 흐르게 할지 말지.. *단위-프레임
+*인터테이스는 맥이나 IP를 집어넣을 수 있는 환경
+스위치 :처음보낼때는 모두에겐 보내지만 다시 table이 완성되면 필터링하여 실수X, collision 안 일어남 
+MAC Address = physical 주소 = HardWare Address /=/ 물건 바코드 넘버(내부용 주소)
+	:48bit, 16진수로 변환 => FFFF:FFFF:FFFF 2^48, All 브로드캐스트, IP가 있으면 무조건 존재
+
+[네트워크 계층] *단위-패킷
+IP : 외부용 주소
+IGMP,ICMP,RARP
+
+[전송계층] *단위 - 세그먼트-------------여기까지 컴퓨터 영역.
+
+TCP : 3번에 걸친 확인과정(ACK), 속도느림, 확인O(신뢰성↑)
+
+UDP : 동영상(실방유튭,아프리카..), 속도빠름, 확인X(=신뢰성떨어짐), 패킷이 제대로전달안된
+	상태로 다음게 들어가니까 렉이걸림
+
+NAC : network inteface card
+*TCP,UDP 하나당 2^16개,
+
+[세션 계층]
+세션 : Server와 CLinet연결고리, 길 = ID/Password/Duration/log off 
+
+[표현 계층] : 세션계층을 넘어오는 패스워드를 암호화 (해킹 방지)
+Encrytion
+
+[어플리케이션 계층]
+
+*캡슐레이션, 디캡슐레이션
+*헤더 : source address, 

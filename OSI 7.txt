@@ -1,0 +1,16 @@
+7 Layer = Application
+
+6 Layer = Presentation =  Encryption  
+
+5 Layer = Sessions = Server 와 Client 연결고리 = ID / Password / duration / log off
+
+4 Layer = Transport = TCP,UDP = Port = 16bit = 2^16 = 65536 				TCP,UDP
+
+3 Layer = Network = Router = IP Address = 32bit 					IP,IGMP,ICMP,ARP,RARP
+
+2 Layer = Data Link = Switch = Mac address
+	Mac-Address = Physical Address = hardware Address = 편의점 아이스크림 바코드 넘버
+	48bit = 16진수 변환 = 12자리로 표현 =  0000.0000.0000 ~ FFFF.FFFF.FFFF = 2^48 = 280조 
+	Broadcast
+
+1 Layer = Physical = cable = Hub = Collision Domain (충돌 영역)
