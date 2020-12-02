@@ -1,0 +1,21 @@
+20.12.0
+
+1. L3 protocol
+ protocol : IP, ICMP, IGMP, ARP, RARP
+ -ARP(Address Rresolution Protocol): 주소 해석기, encapsulation할때 헤더에 붙여 2계층에 보내줌
+  *L3=IP=32bit=1.1.1.1
+  *L2=MAC=48bit 0000.0000.1111
+  ┌ L3 ==ENCAPSULATION==> L2 : ARP
+  └ L2 ==DECAPSUALTION==> L3 : RARP
+ IF) 1.1.1.2	0000.0000.1112 => ARP Table : IP가 존재하는 모든것은 ARP table이 존재 
+
+ 문제) 1.1.1.1 -> 1.1.1.2 통신 = ping 1.1.1.2
+ 보낸 사람 Header 구성 = BroadCast = 모르고 보내는 것 
+ S.IP 1.1.1.1		D.IP 1.1.1.2
+ S.MAC 0000.0000.1111	D.MAC FFFF.FFFF.FFFF(=모두 다 받아라)
+
+ 받는 사람 Header 구성 = 바로 ARP table 바로 작성 = UniCast
+ <보낼 사람 정보>		<받는 사람 정보>
+ S.IP 1.1.1.1 		S.Mac 0000.0000.1111
+ D.IP 1.1.1.2 		D.Mac 0000.0000.1112
+  
