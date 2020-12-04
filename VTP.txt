@@ -1,0 +1,16 @@
+20.12.4
+
+
+1. VTP(Vlan Trunking Protocol)
+
+
+
+
+2. Rivision : 비교 인자값 Rivision, 디폴트 0, 무조건 상승함 <-Vlan이 생성/수정/삭제될때 올라감
+ ex. V 10 '생성' -> 1
+     V 10 이름 '수정' ->2 ...
+=> 리비전을 비교하고 VTN을 '덮어'씌운다.(=수정추가 X, 삭제재생성 O)
+  ex. R1 Rivision 1 // R2 Rivision 4 
+===60초 후===> R1 Rivision 4 // R2 Rivision 4
+ (*그 외 : 수신한 정보가 낮으면 R2->R1도 가능, 같으면 무시)
+ *TransParetns Mode는 Rivision '0' 고정 => 타 스위치의 rivision을 초기화 하고싶다면 trasparents모드로 변경						       					  OR domain 이름을 바꾸던지
