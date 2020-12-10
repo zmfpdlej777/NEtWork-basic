@@ -1,0 +1,81 @@
+2020.12.10
+
+홀수 IP
+192.168.10.1		192.168.10.00000001
+192.168.10.3		192.168.10.00000011
+192.168.10.5		192.168.10.00000101
+192.168.10.63		192.168.10.01000001
+192.168.10.129		192.168.10.10000001
+192.168.10.255		192.168.10.11111111
+============================================
+	192.168.10.0	0.0.0.11111110 = 0.0.0.254
+
+홀수	192.168.10.1 0.0.0.254	permit/deny
+짝수	192.168.10.0 0.0.0.254	permit/deny
+
+문제1)출발지 홀수인 IP 만 허용해라
+access-list 1 permit 192.168.10.1 0.0.0.254
+or
+access-list 1 deny 192.168.10.0 0.0.0.254
+access-list 1 permit any
+
+int f0/1
+ip access-group 1 out
+===================================================================
+Standard 구문 - named형
+ip access-list standard iu.com
+	permit 192.168.10.1 0.0.0.254
+
+int f0/1
+ip access-group iu.com out
+===================================================================
+Extended 구문 - 숫자형
+R1(config)#access-list 100 permit tcp host 192.168.10.1 host 2.1.1.1 eq 80
+R1(config)#access-list 100 deny any any
+
+Extended 구문 - named형
+ip access-list extended iu.com
+	permit tcp host 192.168.10.1 host 2.1.1.1 eq 80
+	permit icmp any any
+	permit tcp host 192.168.10.1 host 2.1.1.2 eq 20
+	permit tcp host 192.168.10.1 host 2.1.1.2 eq 21
+int f0/1
+ip access-group iu.com out
+
+--------------------------------------------------------------------------------
+NAT(Network Address Translation) = 주소번역기
+ 공인 IP =/= 사설 IP
+
+1. 사설 version 
+-예시
+A 10.x.x.x
+B 172.16.x.x ~ 172.31.x.x
+C 192.168.x.x
+
+-이유 : IP의 부족, 보안
+=> 사설IP 여러개가 외부로 나갈때는 한 개의 공인IP를 사용.
+ 실제로 나갈때는 공인IP 뒤에 포트번호(:1, :2)를 붙인다.
+
+-주의점 : 사설 대역대 라우팅? 절대 넣으면 안됨
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
