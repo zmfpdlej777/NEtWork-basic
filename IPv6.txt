@@ -1,0 +1,19 @@
+20.12.11 
+
+1. IPv6
+
+*2진수 = 2가 되면 앞으로 나아 가는 수= 0/1= 한자리가 오면 2가지
+*16진수 = 16이 되면 앞으로 나아가는 수 = 한자리가 오면 16가지 = 4bit
+
+ 1) IPv6 VS IPv4
+  -IPv4 = 32bit = 10진수 변환 => 192.168.10.1
+	= Octet.Octet.Octet.Octet. = 8bit.8bit.8bit.8bit
+  -IPv6 = 128bit = 16진수 변환 => FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:
+	= Field.Field.Field.Field. = 16bit:16bit:16bit:16bit:16bit:16bit:16bit:16bit:
+ 2) 특징
+  -Classful, Subneting 없음  
+
+==========================================================================================
+
+2. IPv6 Routing
+ 1) 
